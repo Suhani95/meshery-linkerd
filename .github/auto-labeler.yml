@@ -1,8 +1,3 @@
-# Auto Labeler for Meshery-Linkerd
-
-# -------------------------
-# Language-based labels
-# -------------------------
 language/go:
   - changed-files:
       - any-glob-to-any-file:
@@ -11,24 +6,17 @@ language/go:
           - "internal/**/*.go"
           - "*.go"
 
-# -------------------------
-# Markdown documentation
-# -------------------------
 area/docs:
   - changed-files:
       - any-glob-to-any-file:
           - "docs/**/*.md"
           - "*.md"
-          - "**/*.md"
 
 language/markdown:
   - changed-files:
       - any-glob-to-any-file:
           - "**/*.md"
 
-# -------------------------
-# CI-related labels
-# -------------------------
 area/ci:
   - changed-files:
       - any-glob-to-any-file:
@@ -36,12 +24,13 @@ area/ci:
           - ".github/auto-labeler.yml"
           - ".github/labeler.yml"
 
-# -------------------------
-# Adapter / Component
-# -------------------------
-component/adapter:
+area/ui:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "templates/**"
+
+service-mesh/linkerd:
   - changed-files:
       - any-glob-to-any-file:
           - "linkerd/**"
           - "mesh/**"
-          - "templates/**"
