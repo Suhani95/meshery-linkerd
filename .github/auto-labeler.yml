@@ -34,5 +34,3 @@ service-mesh/linkerd:
       - any-glob-to-any-file:
           - "linkerd/**"
           - "mesh/**"
- 
- 
