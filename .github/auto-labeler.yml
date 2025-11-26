@@ -1,21 +1,15 @@
-
 language/go:
   - changed-files:
       - any-glob-to-any-file:
           - "cmd/**/*.go"
           - "pkg/**/*.go"
           - "internal/**/*.go"
+          - "*.go"
 
 language/markdown:
   - changed-files:
       - any-glob-to-any-file:
           - "**/*.md"
-
-language/yaml:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "**/*.yml"
-          - "**/*.yaml"
 
 area/docs:
   - changed-files:
@@ -26,24 +20,18 @@ area/docs:
 area/ci:
   - changed-files:
       - any-glob-to-any-file:
-          - ".github/workflows/*"
+          - ".github/workflows/**"
           - ".github/auto-labeler.yml"
           - ".github/labeler.yml"
 
-area/config:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "config/**/*.yaml"
-          - "config/**/*.yml"
-
-area/linkerd:
+component/adapter:
   - changed-files:
       - any-glob-to-any-file:
           - "linkerd/**"
           - "mesh/**"
 
-docs-and-markdown:
+area/templates:
   - changed-files:
       - any-glob-to-any-file:
-          - "**/*.md"
+          - "templates/**"
 
