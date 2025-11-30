@@ -1,4 +1,6 @@
 name: Components to Documents
+permissions:
+  contents: read
 on:
   push:
     paths:

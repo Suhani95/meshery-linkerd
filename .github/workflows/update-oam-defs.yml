@@ -1,4 +1,5 @@
 name: Meshery Linkerd Pattern Components Generator
+permissions: read-all
 on:
   push:
     branches:
@@ -11,6 +12,8 @@ on:
 jobs:
   GenerateComponents:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Check out code
         uses: actions/checkout@master

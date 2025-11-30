@@ -1,4 +1,7 @@
 name: Release Drafter
+permissions:
+  contents: read
+  release: write
 
 on:
   push:
