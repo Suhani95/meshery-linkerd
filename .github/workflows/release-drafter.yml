@@ -1,6 +1,6 @@
 name: Release Drafter
 permissions:
-  contents: read
+  contents: read  
   releases: write
 
 on:
@@ -17,6 +17,6 @@ jobs:
       - uses: release-drafter/release-drafter@v5
         with:
           config-name: release-drafter.yml
-          disable-autolabeler: true
-        
-          
+          disable-autolabeler: true       
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASEDRAFTER_PAT }}
