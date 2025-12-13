@@ -63,7 +63,6 @@ jobs:
       patternfile_name: deploy.yaml
       provider: Local
       k8s_version: v1.22.15
-      patternfile_path: .github/install/deploy.yaml
       sm_version: ${{ needs.SetPatternfile.outputs.sm_version }}
       adapter_version:  ${{ needs.SetPatternfile.outputs.adapter_version }}
       output_filename: data.json
