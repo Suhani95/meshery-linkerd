@@ -46,9 +46,20 @@ jobs:
           name: patternfile
           path: ./.github/install/deploy.yaml
           overwrite: true
+          
+  DownloadPatternfile:
+      needs: SetPatternfile
+      runs-on: ubuntu-latest
+      steps:
+        - name: Download Updated Patternfile
+          uses: actions/download-artifact@v4
+          with:
+            name: patternfile
+            path: ./.github/install/
 
   TestLinkerd:
-    needs: SetPatternfile
+    needs: DownloadPatternfile
+    
     uses: meshery/meshery/.github/workflows/test_adaptersv2.yaml@master
     with:
       expected_resources: linkerd-destination,linkerd-identity,linkerd-proxy-injector
@@ -59,7 +70,7 @@ jobs:
       adapter_name: linkerd
       patternfile_name: deploy.yaml
       provider: Local
-      k8s_version: v1.22.15
+      k8s_version: v1.26.0 #v1.22.15
       sm_version: ${{ needs.SetPatternfile.outputs.sm_version }}
       adapter_version:  ${{ needs.SetPatternfile.outputs.adapter_version }}
       output_filename: data.json
