@@ -85,7 +85,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: meshery/meshery-linkerd
+          images: suhani30/meshery-linkerd
           flavor: |
             latest=false
           tags: |
