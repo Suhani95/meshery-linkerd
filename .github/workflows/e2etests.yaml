@@ -47,7 +47,6 @@ jobs:
           path: ./.github/install/deploy.yaml
           overwrite: true
           
-  
 
   TestLinkerd:
     needs: SetPatternfile
