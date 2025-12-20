@@ -1,5 +1,6 @@
 name: Slack Notify
-
+permissions:
+  contents: read
 on:
   watch:
     types: [started]

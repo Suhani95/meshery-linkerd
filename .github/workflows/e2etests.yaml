@@ -1,5 +1,6 @@
 name: (E2E Tests) Meshery Adapter for Linkerd Tests
-
+permissions:
+  contents: read
 on:
   push:
     branches:
@@ -45,9 +46,11 @@ jobs:
           name: patternfile
           path: ./.github/install/deploy.yaml
           overwrite: true
+          
 
   TestLinkerd:
     needs: SetPatternfile
+    
     uses: meshery/meshery/.github/workflows/test_adaptersv2.yaml@master
     with:
       expected_resources: linkerd-destination,linkerd-identity,linkerd-proxy-injector
@@ -70,6 +73,8 @@ jobs:
     needs: TestLinkerd
     if:  "always() && github.event_name != 'pull_request' "
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Skip if needed
         run: |
