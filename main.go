@@ -215,3 +215,7 @@ func registerWorkloads(port string, log logger.Handler) {
 	}
 	log.Info("Latest workload components successfully registered for version ", version)
 }
+// test change
+// dummy test change
+// test labeler change
+// test change

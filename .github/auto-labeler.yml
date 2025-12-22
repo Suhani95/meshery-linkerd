@@ -1,0 +1,37 @@
+language/go:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "cmd/**/*.go"
+          - "pkg/**/*.go"
+          - "internal/**/*.go"
+          - "*.go"
+
+language/markdown:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+
+area/docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**/*.md"
+          - "*.md"
+
+area/ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/workflows/**"
+          - ".github/auto-labeler.yml"
+          - ".github/labeler.yml"
+
+component/adapter:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "linkerd/**"
+          - "mesh/**"
+
+area/templates:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "templates/**"
+
