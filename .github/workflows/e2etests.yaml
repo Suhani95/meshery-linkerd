@@ -38,7 +38,7 @@ jobs:
           if [ "${{ github.event_name }}" == "release" ]; then
             echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
           else
-            echo "version=stable-2.13.10" >> $GITHUB_ENVV
+            echo "version=stable-2.13.10" >> $GITHUB_ENV
           fi
       - name: Change service mesh version in patternfile
         run: | 
