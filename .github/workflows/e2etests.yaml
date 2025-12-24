@@ -18,8 +18,8 @@ jobs:
   SetPatternfile:
     runs-on: ubuntu-latest
     outputs:
-      sm_version: ${{ steps.setoutputs.outputs.sm_version }}
-      adapter_version: ${{ steps.setoutputs.outputs.adapter_version }}
+      sm_version: ${{ steps.gettag.outputs.release }}
+      adapter_version:  ${{ env.version }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@master
@@ -35,21 +35,15 @@ jobs:
       - name: Get stable release version
         id: getstabletag
         run: |
-          if [ "${{ github.event_name }}" == "release" ]; then
+          if [ ${{ github.event_name }} == "release" ]; then
             echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
           else
-            echo "version=stable-2.13.10" >> $GITHUB_ENV
+            echo "version=edge" >> $GITHUB_ENV
           fi
       - name: Change service mesh version in patternfile
         run: | 
-           yq e -i '.services.linkerd.version="${{ steps.gettag.outputs.release_tag }}"' ./.github/install/deploy.yaml 
+           yq e -i '.services.linkerd.version="${{ steps.gettag.outputs.release }}"' ./.github/install/deploy.yaml 
            cat ./.github/install/deploy.yaml
-      - name: Set job outputs
-        id: setoutputs
-        run: |
-          echo "sm_version=${{ steps.gettag.outputs.release_tag }}" >> $GITHUB_OUTPUT
-          echo "adapter_version=${version}" >> $GITHUB_OUTPUT
-          
       - name: Uploading file
         uses: actions/upload-artifact@v6
         with:
