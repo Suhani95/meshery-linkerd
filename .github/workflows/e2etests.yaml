@@ -25,9 +25,13 @@ jobs:
         uses: actions/checkout@master
       - name: Get latest release tag
         id: gettag
-        run: |
-           NEW_LINKERD_VERSION=$(curl --silent "https://api.github.com/repos/linkerd/linkerd2/releases" | jq ' .[] | select(.tag_name|test("stable")) | ."tag_name"' | sed -n 1p$'\n' | tr -d '"')
-           echo "::set-output name=release::$NEW_LINKERD_VERSION"
+        # run: |
+        #   NEW_LINKERD_VERSION=$(curl --silent "https://api.github.com/repos/linkerd/linkerd2/releases" | jq ' .[] | select(.tag_name|test("stable")) | ."tag_name"' | sed -n 1p$'\n' | tr -d '"')
+        #   echo "::set-output name=release::$NEW_LINKERD_VERSION"
+        uses: pozetroninc/github-action-get-latest-release@master # Replaces the fragile curl/jq command
+        with:
+          repository: linkerd/linkerd2
+          excludes: prerelease, draft, edge
       - name: Get stable release version
         id: getstabletag
         run: |
@@ -64,7 +68,7 @@ jobs:
       adapter_version:  ${{ needs.SetPatternfile.outputs.adapter_version }}
       output_filename: data.json
     secrets:
-      token: ${{ secrets.PROVIDER_TOKEN }} 
+      provider_token: ${{ secrets.PROVIDER_TOKEN }} 
 
 
   UpdateDocs:
