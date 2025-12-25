@@ -68,7 +68,7 @@ jobs:
       adapter_version:  ${{ needs.SetPatternfile.outputs.adapter_version }}
       output_filename: data.json
     secrets:
-      token: ${{ secrets.PROVIDER_TOKEN }} 
+      provider_token: ${{ secrets.PROVIDER_TOKEN }} 
 
 
   UpdateDocs:
