@@ -66,7 +66,7 @@ func main() {
 	err = os.Setenv("KUBECONFIG", path.Join(
 		config.KubeConfig[configprovider.FilePath],
 		fmt.Sprintf("%s.%s", config.KubeConfig[configprovider.FileName], config.KubeConfig[configprovider.FileType])),
-	)
+	   )
 	if err != nil {
 		// Fail silently
 		log.Warn(err)
